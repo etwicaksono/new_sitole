@@ -46,35 +46,3 @@
     </div>
 </div>
 <!-- register-page Section End -->
-
-<section class="blog blog-other">
-    <div class="subscribe">
-        <div class="gradient"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-2">
-                        <h3>Sign up to newsletter - Get in touch with us instantly</h3>
-                        <h4>Email letters will be sent in regular monthly basis. We will send you regular emails with
-                            our best deals and offers.</h4>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <form class="row form-inline">
-                        <div class="col-md-4 form-group">
-                            <input type="text" class="form-control" placeholder="Enter your name" required />
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <input type="email" class="form-control" placeholder="Enter your Email id" required />
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Subscribe now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
-<!-- Footer -->

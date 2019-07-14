@@ -62,10 +62,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <?php
+                        $id = $this->session->userdata('role_id');
+                        if (!$id) $id = 2;
                         $queryMenu = "SELECT app_menu.id, menu
                         FROM app_menu JOIN app_user_access
                         ON app_menu.id = app_user_access.menu_id
-                        WHERE app_user_access.role_id = 1
+                        WHERE app_user_access.role_id = $id
                         AND app_menu.is_active = 1
                         ORDER BY app_user_access.menu_id DESC";
 

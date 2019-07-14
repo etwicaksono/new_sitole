@@ -9,7 +9,7 @@
                     <img src="<?= base_url('vendor/shoppy/'); ?>images/service-1.jpg" alt="The Pulpit Rock" width="304"
                         height="228">
                     <figcaption>
-                        <h3><a href="product_single.html">Kategori <i class="fa fa-angle-right hover-block"
+                        <h3><a href="<?= base_url('barang'); ?>">Kategori <i class="fa fa-angle-right hover-block"
                                     aria-hidden="true"></i>
                                 <span>Barang</span></a></h3>
                     </figcaption>
@@ -20,7 +20,7 @@
                     <img src="<?= base_url('vendor/shoppy/'); ?>images/service-2.jpg" alt="The Pulpit Rock" width="304"
                         height="228">
                     <figcaption>
-                        <h3><a href="product_single.html">Kategori <i class="fa fa-angle-right hover-block"
+                        <h3><a href="<?= base_url('jasa'); ?>">Kategori <i class="fa fa-angle-right hover-block"
                                     aria-hidden="true"></i>
                                 <span>Jasa</span></a></h3>
                     </figcaption>
