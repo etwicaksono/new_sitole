@@ -215,11 +215,11 @@ class Auth extends CI_Controller
 			if ($user['is_active'] == 1) {
 				//cek password
 				if (password_verify($password, $user['password'])) {
-					$data = [
-						'email' => $user['email'],
-						'role_id' => $user['role_id']
-					];
-					$this->session->set_userdata($data);
+					// $data = [
+					// 	'email' => $user['email'],
+					// 	'role_id' => $user['role_id']
+					// ];
+					$this->session->set_userdata($user);
 					$this->session->set_flashdata('message', mk_alert('Selamat datang ' . $user['nama_asli'], 'success col-lg-6 mx-auto mt-5 text-center'));
 					redirect('home/index');
 				} else {

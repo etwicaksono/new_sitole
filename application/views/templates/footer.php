@@ -25,8 +25,17 @@
 <!-- Custom JavaScript -->
 <script src="<?= base_url('vendor/shoppy/'); ?>js/animate.js"></script>
 <script src="<?= base_url('vendor/shoppy/'); ?>js/custom.js"></script>
-<script>
 
+<script>
+//ajax untuk ganti nama file yang diupload ketika edit profil
+$(function() {
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+
+});
 </script>
 </body>
 

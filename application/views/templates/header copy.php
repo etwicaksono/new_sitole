@@ -37,7 +37,7 @@
                         <li><a href="<?= base_url('auth/registrasi'); ?>">Register</a></li>
                         <li><a href="<?= base_url('auth/login'); ?>">Login</a></li>
                         <?php else :; ?>
-                        <li><a href="<?= base_url('user'); ?>">My Account</a></li>
+                        <li><a href="my_profile.html">My Account</a></li>
                         <li><a href="<?= base_url('auth/logout'); ?>">Logout</a></li>
                         <?php endif; ?>
                         <!-- <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a><span>5</span></li> -->
@@ -61,22 +61,34 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item <?php if ($judul == 'HOME') echo 'active'; ?> mx-3"><a
-                                class="nav-link <?php if ($judul == 'HOME') echo 'active'; ?>"
-                                href="<?= base_url(); ?>home">HOME<span class="sr-only">(current)</span></a></li>
-                        <li class="nav-item <?php if ($judul == 'BARANG') echo 'active'; ?>  mx-3"><a
-                                class="nav-link  <?php if ($judul == 'BARANG') echo 'active'; ?>"
-                                href="<?= base_url(); ?>barang">BARANG<span class="sr-only">(current)</span></a></li>
-                        <li class="nav-item  <?php if ($judul == 'JASA') echo 'active'; ?> mx-3"><a
-                                class="nav-link  <?php if ($judul == 'JASA') echo 'active'; ?>"
-                                href="<?= base_url(); ?>jasa">JASA<span class="sr-only">(current)</span></a></li>
-                        <?php if ($this->session->userdata('role_id') != null) : ?>
-                        <li class="nav-item  <?php if ($judul == 'MANAJEMEN') echo 'active'; ?> mx-3"><a
-                                class="nav-link  <?php if ($judul == 'MANAJEMEN') echo 'active'; ?>"
-                                href="<?= base_url(); ?>manajemen">MANAJEMEN<span class="sr-only">(current)</span></a>
-                        </li>
+                        <?php
+                        $id = $this->session->userdata('role_id');
+                        if (!$id) $id = 2;
+                        $queryMenu = "SELECT app_menu.id, menu
+                        FROM app_menu JOIN app_user_access
+                        ON app_menu.id = app_user_access.menu_id
+                        WHERE app_user_access.role_id = $id
+                        AND app_menu.is_active = 1
+                        ORDER BY app_user_access.menu_id DESC";
+
+                        $menus = $this->db->query($queryMenu)->result_array();
+                        ?>
+                        <?php foreach ($menus as $m) : ?>
+                        <?php
+                            $querySubMenu = "SELECT * FROM app_sub_menu WHERE menu_id = $m[id]";
+                            $subMenus = $this->db->query($querySubMenu)->result_array();
+                            foreach ($subMenus as $sm) :
+                                ?>
+                        <li class="nav-item <?php if ($judul == $sm['sub_menu']) echo 'active'; ?> mx-3"><a
+                                class="nav-link <?php if ($judul == $sm['sub_menu']) echo 'active'; ?>"
+                                href="<?= base_url() . $sm['link']; ?>"><?= $sm['sub_menu']; ?><span
+                                    class="sr-only">(current)</span></a></li>
+                        <?php
+                            endforeach;
+                        endforeach;
+                        ?>
+
                     </ul>
-                    <?php endif; ?>
                 </div>
             </nav>
         </div>
